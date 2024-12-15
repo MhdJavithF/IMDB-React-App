@@ -3,7 +3,7 @@ import { useCallback, useEffect, useState } from "react";
 const Pagination = ({change}) => {
 
     const totalPages = 47378;
-    const maxVisiblePage = 10;
+    const maxVisiblePage = 5;
     const startPage = 1;
 
     const [pages, setPages] = useState([]);
