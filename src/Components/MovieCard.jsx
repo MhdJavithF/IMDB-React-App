@@ -1,23 +1,25 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
+import { AppDataContext } from "./AppDataContext";
 
-const MovieCard = ({movie, onUpdateWatchlist, watchlist}) => {
+const MovieCard = ({movie}) => {
 
-    const isMovieAdded = watchlist.find(addedMovie => addedMovie.id == movie.id);
+    const watchlistContextData = useContext(AppDataContext);
+    const {watchlistMovies, setWatchlists} = watchlistContextData;
+
+    const isMovieAdded = watchlistMovies.find(addedMovie => addedMovie.id == movie.id);
 
     const handleWatchlistMovie = (e) => {
-        const movieId = e.currentTarget.dataset.id;
+        // const movieId = e.currentTarget.dataset.id;
         if(!isMovieAdded){
-            onUpdateWatchlist((prevList) => {
+            setWatchlists((prevList) => {
                 const favourites = ([...prevList, movie]);
-                localStorage.setItem("favourites",JSON.stringify(favourites)|| []);
                 return favourites;
             });
         }
         else{
-            onUpdateWatchlist(prevList => {
-                const newList = prevList.filter(item => item !== movie);
-                localStorage.setItem("favourites",JSON.stringify(newList) || []);
+            setWatchlists(prevList => {
+                const newList = prevList.filter(item => item.id !== movie.id);
                 return newList;
             });
         }

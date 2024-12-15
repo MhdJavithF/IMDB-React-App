@@ -1,16 +1,15 @@
-import { useEffect, useMemo, useState } from "react";
+import { useContext, useEffect, useMemo, useState } from "react";
 import MovieCard from "./MovieCard";
 import Pagination from "./Pagination";
 import Heading from "./Heading";
+import { AppDataContext } from "./AppDataContext";
 
 
 
 const MovieLists = () => {
     const [movies, setMovies] = useState([]);
-    const [watchlistMovies, setWatchlists] = useState(() => {
-        const favouriteData = localStorage.getItem("favourites") || [];
-        return (JSON.parse(favouriteData));
-    });
+    const watchlistContextData = useContext(AppDataContext);
+    const {watchlistMovies, setWatchlists} = watchlistContextData;
 
     const popularMovies = useMemo(() => movies.filter((movie) => {
         // console.log('popularMovies');
@@ -30,11 +29,10 @@ const MovieLists = () => {
 
     return (
         <>
-            <Heading watchlistCount={watchlistMovies.length}/>
             <div className="movie-lists">
                 {
                     movies.map(movie => (
-                        <MovieCard movie={movie} onUpdateWatchlist={setWatchlists} watchlist={watchlistMovies}/>
+                        <MovieCard movie={movie} />
                     ))
                 }
             </div>

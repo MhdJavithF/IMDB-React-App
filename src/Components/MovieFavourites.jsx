@@ -1,6 +1,7 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { FaArrowUpLong,FaArrowDownLong } from "react-icons/fa6";
 import Heading from "./Heading";
+import { AppDataContext } from "./AppDataContext";
 
 const MovieFavourites = () => {
     let genreids = {
@@ -29,15 +30,15 @@ const MovieFavourites = () => {
     const [genres, setGenres] = useState([]);
     const [selectGenre, setSelectGenre] = useState("");
     const [filterMovieList, setFilterMovieList] = useState([]);
+    const {watchlistMovies, setWatchlists} = useContext(AppDataContext);
 
     useEffect(() => {
-        const favouriteData = JSON.parse(localStorage.getItem("favourites")) || [];
-        setFavMovieList(favouriteData);
-        setFilterMovieList(favouriteData);
+        setFavMovieList(watchlistMovies);
+        setFilterMovieList(watchlistMovies);
 
-        const genreData = favouriteData.map(data => data.genre_ids[0]);
+        const genreData = watchlistMovies.map(data => data.genre_ids[0]);
         setGenres(Array.from(new Set(genreData)));
-    },[])
+    },[watchlistMovies])
 
     const handleSelectGenre = (e) => {
         setSelectGenre(e.target.dataset.id)
@@ -76,10 +77,9 @@ const MovieFavourites = () => {
             const movieIdx = prevFavList.findIndex(movie => movie.id == movieId);
             const finalFavList = [...prevFavList];
             finalFavList.splice(movieIdx,1);
-            localStorage.setItem("favourites", JSON.stringify(finalFavList));
+            setWatchlists(finalFavList);
             return finalFavList;
         })
-        
     }
 
     return (
