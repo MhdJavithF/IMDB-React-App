@@ -12,6 +12,7 @@ import {
     Routes,
 } from "react-router-dom";
 import AppDataProvider from "./AppDataContext";
+import Footer from "./Footer";
 
 
 const MovieApp = () => {
@@ -31,9 +32,9 @@ const MovieApp = () => {
             <Route  path="/movie-detail/:movieId" element={<><Heading/><MovieDetails/></>}></Route>
             <Route  path="/movie-favourites/" element={<><MovieFavourites /></>}></Route>
           </Routes>
+          <Footer />
         </BrowserRouter>
       </AppDataProvider>
-        
     );
 }
 

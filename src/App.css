@@ -1,30 +1,55 @@
-.App {
-  text-align: center;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.heading {
+  height: 4rem;
+  width: 100%;
   display: flex;
-  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  gap: 15px;
+  background-color: black;
+
+  #home_img {
+    margin-left: 1.2rem;
+  }
+
+  h3 {
+    color: blanchedalmond;
+  }
+
+  .watchlist {
+    color: beige;
+    display: flex;
+    align-items: center;
+    margin-left: 60%;
+    gap: 5px;
+
+    p,svg {
+      font-size: medium;
+      font-weight: 500;
+      color: blanchedalmond;
+    }
+
+    #count {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 30px;
+      height: 20px;
+      padding: 2px;
+      font-size: medium;
+      font-weight: 500;
+      border: 2px solid white;
+      border-radius: 50px;
+      background-color: white;
+      color: black;
+    }
+  }
 }
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
 
 .movie-lists {
   display: flex;
@@ -79,49 +104,6 @@
   margin-left: 2px;
 }
 
-.heading {
-  height: 4rem;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  gap: 15px;
-  background-color: black;
-
-  #home_img {
-    margin-left: 1.2rem;
-  }
-
-  h3 {
-    color: blanchedalmond;
-  }
-
-  .watchlist {
-    color: beige;
-    display: flex;
-    align-items: center;
-    margin-left: 60%;
-    gap: 5px;
-
-    p,svg {
-      font-size: medium;
-      font-weight: 500;
-      color: blanchedalmond;
-    }
-
-    #count {
-      width: 30px;
-      height: 20px;
-      padding: 2px;
-      font-size: medium;
-      font-weight: 500;
-      border: 2px solid white;
-      border-radius: 50px;
-      background-color: white;
-      color: black;
-      text-align: center;
-    }
-  }
-}
 
 @media screen and (max-width: 768px) {
   .heading {
@@ -155,6 +137,7 @@
     }
   }
 }
+
 
 .movie-detail-wrapper {
   display: flex;
@@ -347,5 +330,24 @@
         font-weight: 600;
       }
     }
+  }
+}
+
+.footer {
+  width: 100%;
+  background-color: black;
+  color: whitesmoke;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
+  font-size: small;
+  bottom: 0;
+
+  svg {
+    font-size: 1.2rem;
+    cursor: pointer;
+    color: whitesmoke;
   }
 }
