@@ -1,7 +1,6 @@
 import { useContext, useEffect, useMemo, useState } from "react";
 import MovieCard from "./MovieCard";
 import Pagination from "./Pagination";
-import Heading from "./Heading";
 import { AppDataContext } from "./AppDataContext";
 
 
@@ -18,7 +17,7 @@ const MovieLists = () => {
 
 
     const fetchCall = (pageNo) => {
-        fetch(`https://api.themoviedb.org/3/movie/popular?api_key=91b86d6d565b7ac388d4dde45df6c38f&page=${pageNo}`)
+        fetch(`${process.env.REACT_APP_API_URL}/movie/popular?api_key=${process.env.REACT_APP_API_KEY}&page=${pageNo}`)
             .then(res => res.json())
             .then(data => setMovies(data.results || []));
     }

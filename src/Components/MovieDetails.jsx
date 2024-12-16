@@ -9,7 +9,7 @@ const MovieDetails = () => {
     const [movieDetail, setMovieDetail] = useState({});  
 
     useEffect(() => {
-        fetch(`https://api.themoviedb.org/3/movie/${params.movieId}?api_key=91b86d6d565b7ac388d4dde45df6c38f`)
+        fetch(`${process.env.REACT_APP_API_URL}/movie/${params.movieId}?api_key=${process.env.REACT_APP_API_KEY}`)
             .then(res => res.json())
             .then(data => setMovieDetail(data));
     }, []);
