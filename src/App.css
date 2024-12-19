@@ -331,6 +331,62 @@
   }
 }
 
+@media (max-width: 768px) {
+  .fav-head {
+    width: 100%;
+    margin-top: 1rem;
+    justify-items: center;
+
+    h2 {
+      font-size: 1.1rem; /* Adjust heading size */
+    }
+
+    input {
+      font-size: 0.9rem;
+      padding: 0.4rem;
+    }
+  }
+
+  .fav-wrapper {
+    flex-direction: column;
+    width: 100%;
+    margin: 1rem;
+    gap: 1rem;
+
+    .left-sec {
+      align-items: center;
+      .genres-wrapper {
+        max-width: 90%; /* Ensure it fits smaller screens */
+      }
+    }
+
+    .right-sec {
+      table {
+        font-size: 0.75rem; /* Slightly smaller text for table */
+      }
+
+      th, td {
+        padding: 5px; /* Adjust padding for smaller screens */
+      }
+
+      table th:nth-child(5) {
+        display: none;
+      }
+
+      table td:nth-child(5) {
+        display: none;
+      }
+      table th:nth-child(3) {
+        display: none;
+      }
+
+      table td:nth-child(3) {
+        display: none;
+      }
+    }
+  }
+}
+
 .footer {
   width: 100%;
   background-color: black;
